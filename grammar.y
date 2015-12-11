@@ -4,7 +4,7 @@
 #include <string.h>
 #include <unistd.h>
 #include <fcntl.h>
-#include "table_symboles.h"
+#include "symbol_table.h"
 
 
   extern int yylineno;

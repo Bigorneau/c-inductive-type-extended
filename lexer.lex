@@ -1,7 +1,7 @@
 %{
 	#include <stdio.h>
 	#include <string.h>
-	#include "grammaire.h"
+	#include "grammar.h"
 	
 	int flag=0;
 %}

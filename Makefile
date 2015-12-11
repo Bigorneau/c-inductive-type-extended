@@ -3,22 +3,22 @@ LEXOPTS=
 YACC=bison
 YACCOPTS=-d # Use to generated grammar.h
 
-LEXFILES=lexeur.lex
-YACCFILES=grammaire.y
-CFILES=table_symboles.c
-BINARY=traducteur
+LEXFILES=lexer.lex
+YACCFILES=grammar.y
+CFILES=symbol_table.c
+BINARY=translator
 
 OBJECTS=$(LEXFILES:%.lex=%.o) $(YACCFILES:%.y=%.o) $(CFILES:%.c=%.o)
 
 GENERATEDFILES=$(OBJECTS) $(YACCFILES:%.y=%.c) $(YACCFILES:%.y=%.h) $(LEXFILES:%.lex=%.c) $(BINARY)
 
-$(BINARY): grammaire.c lexeur.c $(OBJECTS)
+$(BINARY): grammar.c lexer.c $(OBJECTS)
 	-$(CC) $(CCOPTS) $(OBJECTS) -o $@
 
-grammaire.c: grammaire.y
+grammar.c: grammar.y
 	-$(YACC) $(YACCOPTS) -o $@  $<
 
-lexeur.c: lexeur.lex
+lexer.c: lexer.lex
 	-$(LEX) $(LEXOPTS) -o $@  $<
 
 clean:

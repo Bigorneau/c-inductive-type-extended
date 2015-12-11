@@ -1,4 +1,4 @@
-#include "table_symboles.h"
+#include "symbol_table.h"
 
 
 Symbole *symb_add_debut(Symbole **liste, int ident, char *valeur) //Ajout en début de liste
