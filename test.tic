@@ -1,0 +1,33 @@
+Ceci est un fichier de test pour l'implémentation des types inductifs d'OCamL en C à l'aide des outils LEX d'analyseur lexicale et YACC des grammaires.
+Tout ce qui n'est pas contenu entre /* BEGIN TIC */ /* END TIC */ est ignoré par le lexeur.
+
+-----------------------------------------------------
+-----------------------------------------------------
+
+Type donné en exemple dans le sujet.
+
+/* BEGIN TIC */
+type arbre = Feuille of int | Noeud of string * arbre * arbre ;
+/* END TIC */
+
+-----------------------------------------------------
+-----------------------------------------------------
+
+Vérification de la cohérence des types.
+Le type complexe n'est pas bien défini car le constructeur Couple apparaissant dans sa définition est défini auparavant.
+
+/* BEGIN TIC */
+type couple = Couple of int* int;
+type complexe = Couple of real * real ;
+/* END TIC */
+
+
+
+La définition du type def n'est pas valide, car le type ghi n'a pas été défini avant, donc sa définition n'est pas complète. Par contre le type pair est bien défini, car le type impair dans le corps de sa définition est défini dans la même définition mutuelle.
+
+/* BEGIN TIC */
+type abc = int;
+type def = Triplet of abc* def* ghi;
+type pair = Zero | Succ of impair
+	and impair = Autre_succ of pair ;
+/* END TIC */
